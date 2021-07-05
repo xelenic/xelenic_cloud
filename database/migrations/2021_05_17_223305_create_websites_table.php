@@ -20,7 +20,7 @@ class CreateWebsitesTable extends Migration
             $table->text('user_id');
             $table->integer('visitor_count')->default(0);
             $table->integer('used_credits')->default(0);
-            $table->text('export_count')->default(0);
+            $table->text('export_count')->nullable();
             $table->text('features')->nullable();
             $table->text('preview_url')->nullable();
             $table->text('source_zip')->nullable();
