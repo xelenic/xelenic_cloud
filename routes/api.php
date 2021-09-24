@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Frontend\User\HostBucketController;
-
+use App\Http\Controllers\Backend\FileManagerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,3 +21,5 @@ use App\Http\Controllers\Frontend\User\HostBucketController;
 
 Route::get('get_package_details/{name}', [HostBucketController::class, 'getpackageDetails'])->name('hostbucket.package_list_api');
 Route::get('cost_calulcate/{package_name}/{billling_type}/{value}/{day}', [HostBucketController::class, 'billing_calulation'])->name('hostbucket.get_package_details');
+
+Route::post('files_manager', [FileManagerController::class, 'upload_files'])->name('files_manager.upload_files');

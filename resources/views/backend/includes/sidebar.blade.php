@@ -12,7 +12,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{active_class(Route::is('admin/dashboard'))}}" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link {{active_class(Route::is('admin/products'))}}" href="{{ route('admin.products') }}">
                     <i class="nav-icon fa fa-cube"></i>
                     Products
                 </a>
