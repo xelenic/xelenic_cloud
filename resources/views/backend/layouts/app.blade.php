@@ -23,31 +23,7 @@
     <link rel="stylesheet" href="{{url('css/vendors.css')}}">
 
 
-    <script>
-        var AIZ = AIZ || {};
-        AIZ.local = {
-            nothing_selected: 'Nothing selected',
-            nothing_found: 'Nothing found',
-            choose_file: 'Choose file',
-            file_selected: 'File selected',
-            files_selected: 'Files selected',
-            add_more_files: 'Add more files',
-            adding_more_files: 'Adding more files',
-            drop_files_here_paste_or: 'Drop files here, paste or',
-            browse: 'Browse',
-            upload_complete: 'Upload complete',
-            upload_paused: 'Upload paused',
-            resume_upload: 'Resume upload',
-            pause_upload: 'Pause upload',
-            retry_upload: 'Retry upload',
-            cancel_upload: 'Cancel upload',
-            uploading: 'Uploading',
-            processing: 'Processing',
-            complete: 'Complete',
-            file: 'File',
-            files: 'Files',
-        }
-    </script>
+
 
 
     @yield('meta')
@@ -123,9 +99,9 @@
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
-    <script src="https://bakkiya.com/assets/js/vendors.js" ></script>
+    {{--<script src="https://bakkiya.com/assets/js/vendors.js" ></script>--}}
 
-    <script src="https://bakkiya.com/assets/js/aiz-core.js" ></script>
+    {{--<script src="https://bakkiya.com/assets/js/aiz-core.js" ></script>--}}
 
     @stack('after-scripts')
 </body>

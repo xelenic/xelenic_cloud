@@ -15,6 +15,7 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="login_panel/css/style.css">
+    <link rel="stylesheet" href="social/style.css">
 
     <style>
 
@@ -72,7 +73,10 @@
                                 <span class="d-block text-center my-4 text-muted"> or sign in with</span>
 
                                 <div class="social-login text-center">
-                                    @include('frontend.auth.includes.socialite')
+                                    <div class="row">
+                                        @include('frontend.auth.includes.socialite')
+                                    </div>
+
                                     {{--<a href="#" class="facebook">--}}
                                         {{--<span class="icon-facebook mr-3"></span>--}}
                                     {{--</a>--}}
