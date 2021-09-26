@@ -35,7 +35,12 @@ class HostBucketPanelController extends Controller
     public function remote_sql($id)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $details = $api->remoteSQL();
         if($details == null)
         {
@@ -52,7 +57,11 @@ class HostBucketPanelController extends Controller
     public function remote_sql_host_delete($id,Request $request)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $details = $api->remoteSQLDeleteHostAccess($request->host);
         return back();
     }
@@ -60,8 +69,13 @@ class HostBucketPanelController extends Controller
 
     public function remote_sql_host_add($id,Request $request)
     {
+
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $details = $api->remoteSQLHostAdd($request->host);
         return back();
     }
@@ -69,7 +83,12 @@ class HostBucketPanelController extends Controller
     public function database_user_access($id,Request $request)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $babilone = "";
         foreach ($request->all() as $key=>$req)
         {
@@ -92,7 +111,12 @@ class HostBucketPanelController extends Controller
     public function delete_user_database($id,Request $request)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getMySQLDatabase = $api->deleteUserMySQL($request->database_user);
         if($getMySQLDatabase->errors == null)
         {
@@ -105,6 +129,11 @@ class HostBucketPanelController extends Controller
     public function login_cpanel($id, Request $request)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+
         $sessionData = Reseller::cpanel_login($hostingDetails->reseller_id,$hostingDetails->username,'cpanel_id');
         return redirect($sessionData->data->url);
     }
@@ -119,7 +148,11 @@ class HostBucketPanelController extends Controller
     public function databases_page($id)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getMySQLDatabase = $api->getAllDatabasesMySQL();
         if($getMySQLDatabase == null)
         {
@@ -136,7 +169,11 @@ class HostBucketPanelController extends Controller
     public function config_database($id,$database_name)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getSQLServerInfo = $api->getMySQLServerInfo();
         $getMySQLUsers = $api->listUserMySQL();
         if($getMySQLUsers == null)
@@ -155,9 +192,12 @@ class HostBucketPanelController extends Controller
     public function create_database($id,Request $request)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
         $hostusername = $hostingDetails->username;
         $stringCut = substr($hostusername, 0, 8).'_';
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getMySQLDatabase = $api->createDataBaseMySQL($stringCut.$request->database_name);
         if($getMySQLDatabase->errors == null)
         {
@@ -170,7 +210,11 @@ class HostBucketPanelController extends Controller
     public function delete_database($id,Request $request)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getMySQLDatabase = $api->deleteDataBaseMySQL($request->database_name);
         if($getMySQLDatabase->errors == null)
         {
@@ -183,9 +227,13 @@ class HostBucketPanelController extends Controller
     public function create_users_database($id,Request $request)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
         $hostusername = $hostingDetails->username;
         $stringCut = substr($hostusername, 0, 8).'_';
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getMySQLDatabase = $api->createUserMySQL($stringCut.'_'.$request->user_name,$request->password);
         if($getMySQLDatabase->errors == null)
         {
@@ -198,7 +246,11 @@ class HostBucketPanelController extends Controller
     public function database_user_management($id)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getMySQLUsers = $api->listUserMySQL();
         if($getMySQLUsers == null)
         {
@@ -219,7 +271,11 @@ class HostBucketPanelController extends Controller
     public function git_panel($id)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getretnGit = $api->listGitRepo();
         if($getretnGit == null)
         {
@@ -237,11 +293,15 @@ class HostBucketPanelController extends Controller
     {
 
         $hostingDetails = HostBucket::where('id',$id)->first();
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
         $rootUrl = '/home/'.$hostingDetails->username.'/'.$request->repo_path;
         $plc= str_replace("/","%2f",$rootUrl);
         if($request->clone_repo == null)
         {
-            $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+            $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
             $getretnGit = $api->createGitRepo($request->repo_name,$plc,$request->clone_url);
 
         }else{
@@ -259,7 +319,11 @@ class HostBucketPanelController extends Controller
     public function repair_users_database($id,Request $request)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getretnGit = $api->repairDataBaseMysql($request->database_name);
         if($getretnGit->errors == null)
         {
@@ -275,7 +339,11 @@ class HostBucketPanelController extends Controller
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
         $hostusername = $hostingDetails->username;
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getretnGit = $api->listGitRepo();
         $dataout = "";
         foreach ($getretnGit->data as  $data)
@@ -304,7 +372,11 @@ class HostBucketPanelController extends Controller
         $hostingDetails = HostBucket::where('id',$id)->first();
         $rootUrl = $request->repo_path;
         $plc= str_replace("/","%2f",$rootUrl);
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getretnGit = $api->deleteGitRepo($plc);
         return back();
     }
@@ -312,7 +384,12 @@ class HostBucketPanelController extends Controller
     public function ftp_connections($id)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getretnGit = $api->ftplist();
 
         return view('frontend.user.hostbucket.host_panel.functions.ftp_connection.index',[
@@ -324,7 +401,12 @@ class HostBucketPanelController extends Controller
     public function create_ftp_account($id, Request $request)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $getretnGit = $api->ftpCreate($request->login,$request->password,$request->quota_limit);
         if($getretnGit->errors == null)
         {
