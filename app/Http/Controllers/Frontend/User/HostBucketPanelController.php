@@ -13,7 +13,13 @@ class HostBucketPanelController extends Controller
     public function server_information_page($id)
     {
         $hostingDetails = HostBucket::where('id',$id)->first();
-        $api = new CpanelCore("xelenic.com",$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
         $brandwith_data = $api->getBandwidth("+5:30");
         if($brandwith_data == null)
         {
