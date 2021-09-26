@@ -60,7 +60,7 @@
                                                 <div class="">
                                                     <div class="btn-group btn-group-xs mb-25" role="group" aria-label="Basic example">
                                                         @if($hostbucket->cpanel_api_details)
-                                                            <a href="{{ route('frontend.user.hostbucket.c',$hostbucket->id)}}" type="button" class="btn btn-primary">HostPanel</a>
+                                                            <a href="{{ route('frontend.user.hostbucket.host_panel',$hostbucket->id)}}" type="button" class="btn btn-primary">HostPanel</a>
                                                         @else
 
                                                         @endif
