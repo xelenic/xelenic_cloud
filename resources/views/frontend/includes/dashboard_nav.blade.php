@@ -63,7 +63,7 @@
                 <div class="media">
                     <div class="media-img-wrap">
                         <div class="avatar">
-                            <img src="{{url('FrontDashboard/dist/img/avatar1.jpg')}}" alt="user" class="avatar-img rounded-circle">
+                            <img src="{{auth()->user()->picture}}" alt="user" class="avatar-img rounded-circle">
                         </div>
                         <span class="badge badge-success badge-indicator"></span>
                     </div>
