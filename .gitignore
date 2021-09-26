@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/tmp
+/public/backend/assets/builder/images/gallery
 /storage/*.key
 /vendor
 /.idea
