@@ -79,9 +79,9 @@
     <script src="{{url('FrontDashboard/vendors/morris.js/morris.min.js')}}"></script>
     <script src="{{url('FrontDashboard/vendors/raphael/raphael.min.js')}}"></script>
     <script>
-        @stack('after-script')
-    </script>
 
+    </script>
+    @stack('after-script')
 </body>
 
 </html>

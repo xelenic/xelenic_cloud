@@ -22,12 +22,17 @@ $(document).ready(function(){
 	$(document).on("click", "a.disabled,a:disabled",function(e) {
 		 return false;
 	});
+
 });
 /*****Ready function end*****/
 
 /*****Load function start*****/
 $(window).on("load",function(){
 	$(".preloader-it").delay(500).fadeOut("slow");
+    setTimeout(function(){
+
+	}, 3000);
+
 });
 /*****Load function* end*****/
 
