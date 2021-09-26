@@ -57,9 +57,10 @@
 
             </form>
 
-
+            @push('after-script')
             <script>
-                @push('after-script')
+
+
                     $('input').keypress(function () {
                         $('input').attr('class', 'form-control');
                         $('.errr_description').html('');
@@ -287,10 +288,10 @@
                         }
                         x[n].className += " active";
                     }
-                @endpush
+
             </script>
 
-
+            @endpush
 
 
 
