@@ -5914,20 +5914,20 @@ div.footable-loader > span.fooicon:after {
 
 /*badges*/
 .badge {
-    display: -webkit-inline-box;
+    /* display: -webkit-inline-box; */
     display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-box-pack: center;
+    /* display: inline-flex; */
+    /* -webkit-box-pack: center; */
     -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
+    /* justify-content: center; */
+    /* -webkit-box-align: center; */
     -ms-flex-align: center;
-    align-items: center;
-    height: 18px;
-    width: 18px;
-    font-size: 0.65rem;
-    font-weight: 500;
-    line-height: unset;
+    /* align-items: center; */
+    /* height: 18px; */
+    /* width: 18px; */
+    /* font-size: 0.65rem; */
+    /* font-weight: 500; */
+    /* line-height: unset; */
 }
 .badge-circle {
     border-radius: 50%;

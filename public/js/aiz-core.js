@@ -79,15 +79,15 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                 AIZ.uploader.data.allFiles[
                                     AIZ.uploader.data.allFiles.findIndex(
                                         (x) =>
-                                        x.id ===
-                                        AIZ.uploader.data.clickedForDelete
+                                            x.id ===
+                                            AIZ.uploader.data.clickedForDelete
                                     )
-                                    ];
+                                ];
                             $.ajax({
                                 url:
-                                AIZ.data.appUrl +
-                                "/aiz-uploader/destroy/" +
-                                AIZ.uploader.data.clickedForDelete,
+                                    AIZ.data.appUrl +
+                                    "/aiz-uploader/destroy/" +
+                                    AIZ.uploader.data.clickedForDelete,
                                 type: "DELETE",
                                 dataType: "JSON",
                                 data: {
@@ -115,7 +115,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                     AIZ.uploader.updateUploaderSelected();
                                     AIZ.uploader.getAllUploads(
                                         AIZ.data.appUrl +
-                                        "/aiz-uploader/get_uploaded_files"
+                                            "/aiz-uploader/get_uploaded_files"
                                     );
                                     AIZ.uploader.data.clickedForDelete = null;
                                     $("#aizUploaderDelete").modal("hide");
@@ -136,7 +136,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                             AIZ.uploader.data.allFiles.findIndex(
                                 (x) => x.id === value
                             )
-                            ];
+                        ];
                     // console.log(valueObject);
 
                     elem.closest(".aiz-file-box-wrap").toggleAttr(
@@ -502,7 +502,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                     thumb = '<i class="la la-file-text"></i>';
                                 }
                                 var html =
-                                    '<div style="background-color: white;" class="d-flex justify-content-between align-items-center mt-2 file-preview-item" data-id="' +
+                                    '<div class="d-flex justify-content-between align-items-center mt-2 file-preview-item" data-id="' +
                                     data[i].id +
                                     '" title="' +
                                     data[i].file_original_name +
@@ -529,7 +529,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                     "</div>" +
                                     '<div class="remove">' +
                                     '<button class="btn btn-sm btn-link remove-attachment" type="button">' +
-                                    '<i class="la la-close"></i>' +
+                                    '<i class="btn-close"></i>' +
                                     "</button>" +
                                     "</div>" +
                                     "</div>";
@@ -539,7 +539,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                         } else {
                             elem.find(".file-amount").html(AIZ.local.choose_file);
                         }
-                    });
+                });
             } else {
                 elem.find(".file-amount").html(AIZ.local.choose_file);
             }
@@ -783,7 +783,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                         thumb = '<i class="la la-file-text"></i>';
                                     }
                                     var html =
-                                        '<div style="background-color: white;" class="d-flex justify-content-between align-items-center mt-2 file-preview-item" data-id="' +
+                                        '<div class="d-flex justify-content-between align-items-center mt-2 file-preview-item" data-id="' +
                                         data[i].id +
                                         '" title="' +
                                         data[i].file_original_name +
@@ -810,7 +810,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                         "</div>" +
                                         '<div class="remove">' +
                                         '<button class="btn btn-sm btn-link remove-attachment" type="button">' +
-                                        '<i class="la la-close"></i>' +
+                                        '<i class="btn-close"></i>' +
                                         "</button>" +
                                         "</div>" +
                                         "</div>";
@@ -820,7 +820,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                             } else {
                                 $this.find(".file-amount").html(AIZ.local.choose_file);
                             }
-                        });
+                    });
                 }
             });
         }
@@ -839,7 +839,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     }
                     $this.selectpicker({
                         size: 5,
-                        noneSelectedText: AIZ.local.nothing_selected,
+                        noneSelectedText: AIZ.local.nothing_selected,                     
                         virtualScroll: false
                     });
                 }
@@ -894,14 +894,14 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
 
                 buttons = !buttons
                     ? [
-                        ["font", ["bold", "underline", "italic", "clear"]],
-                        ["para", ["ul", "ol", "paragraph"]],
-                        ["style", ["style"]],
-                        ["color", ["color"]],
-                        ["table", ["table"]],
-                        ["insert", ["link", "picture", "video"]],
-                        ["view", ["fullscreen", "undo", "redo"]],
-                    ]
+                          ["font", ["bold", "underline", "italic", "clear"]],
+                          ["para", ["ul", "ol", "paragraph"]],
+                          ["style", ["style"]],
+                          ["color", ["color"]],
+                          ["table", ["table"]],
+                          ["insert", ["link", "picture", "video"]],
+                          ["view", ["fullscreen", "undo", "redo"]],
+                      ]
                     : buttons;
                 placeholder = !placeholder ? "" : placeholder;
                 minHeight = !minHeight ? 200 : minHeight;
@@ -927,11 +927,11 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
 
                 var nativeHtmlBuilderFunc = $this.summernote('module', 'videoDialog').createVideoNode;
 
-                $this.summernote('module', 'videoDialog').createVideoNode =  function(url)
-                {
+                $this.summernote('module', 'videoDialog').createVideoNode =  function(url) 
+                {   
                     var wrap = $('<div class="embed-responsive embed-responsive-16by9"></div>');
                     var html = nativeHtmlBuilderFunc(url);
-                    html = $(html).addClass('embed-responsive-item');
+                        html = $(html).addClass('embed-responsive-item');
                     return wrap.append(html)[0];
                 };
             });
@@ -1006,8 +1006,8 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     $this.on("apply.daterangepicker", function (ev, picker) {
                         $this.val(
                             picker.startDate.format(format) +
-                            separator +
-                            picker.endDate.format(format)
+                                separator +
+                                picker.endDate.format(format)
                         );
                     });
                 }
@@ -1086,13 +1086,13 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     },
                     type: type,
                     template:
-                    '<div data-notify="container" class="aiz-notify alert alert-{0}" role="alert">' +
-                    '<button type="button" aria-hidden="true" data-notify="dismiss" class="close"><i class="las la-times"></i></button>' +
-                    '<span data-notify="message">{2}</span>' +
-                    '<div class="progress" data-notify="progressbar">' +
-                    '<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
-                    "</div>" +
-                    "</div>",
+                        '<div data-notify="container" class="aiz-notify alert alert-{0}" role="alert">' +
+                        '<button type="button" aria-hidden="true" data-notify="dismiss" class="close"><i class="las la-times"></i></button>' +
+                        '<span data-notify="message">{2}</span>' +
+                        '<div class="progress" data-notify="progressbar">' +
+                        '<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                        "</div>" +
+                        "</div>",
                 }
             );
         },
@@ -1171,10 +1171,10 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                         var $this = $(this).html(
                             event.strftime(
                                 "" +
-                                '<div class="countdown-item"><span class="countdown-digit">%-D</span></div><span class="countdown-separator">:</span>' +
-                                '<div class="countdown-item"><span class="countdown-digit">%H</span></div><span class="countdown-separator">:</span>' +
-                                '<div class="countdown-item"><span class="countdown-digit">%M</span></div><span class="countdown-separator">:</span>' +
-                                '<div class="countdown-item"><span class="countdown-digit">%S</span></div>'
+                                    '<div class="countdown-item"><span class="countdown-digit">%-D</span></div><span class="countdown-separator">:</span>' +
+                                    '<div class="countdown-item"><span class="countdown-digit">%H</span></div><span class="countdown-separator">:</span>' +
+                                    '<div class="countdown-item"><span class="countdown-digit">%M</span></div><span class="countdown-separator">:</span>' +
+                                    '<div class="countdown-item"><span class="countdown-digit">%S</span></div>'
                             )
                         );
                     });
@@ -1318,9 +1318,9 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
             if ($(".aiz-range-slider")[0]) {
                 $(".aiz-range-slider").each(function () {
                     var c = document.getElementById("input-slider-range"),
-                        d = document.getElementById("input-slider-range-value-low"),
-                        e = document.getElementById("input-slider-range-value-high"),
-                        f = [d, e];
+                    d = document.getElementById("input-slider-range-value-low"),
+                    e = document.getElementById("input-slider-range-value-high"),
+                    f = [d, e];
 
                     noUiSlider.create(c, {
                         start: [
@@ -1333,13 +1333,13 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                             max: parseInt(c.getAttribute("data-range-value-max")),
                         },
                     }),
-
-                        c.noUiSlider.on("update", function (a, b) {
-                            f[b].textContent = a[b];
-                        }),
-                        c.noUiSlider.on("change", function (a, b) {
-                            rangefilter(a);
-                        });
+                    
+                    c.noUiSlider.on("update", function (a, b) {
+                        f[b].textContent = a[b];
+                    }),
+                    c.noUiSlider.on("change", function (a, b) {
+                        rangefilter(a);
+                    });
                 });
             }
         },

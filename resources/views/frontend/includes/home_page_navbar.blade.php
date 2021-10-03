@@ -20,54 +20,35 @@
                         <div class="col-md-3">
                             <div class="card" style="border-color: #2196f3;">
                                 <div class="card-body" style="background-color: #4174c7;color: white;border-color: #2b69bd;">
-                                    <b style="color: white;font-weight: 600;text-align: center">Tools and Servers </b><i class="fa fa-cube" style="font-size: 15px;padding-left: 10px;"></i> <br> <br>
-                                    <a style="color: white;" class="dropdown-item" href="/about">Animtrap</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a style="color: white;" class="dropdown-item" href="/about/team">Xelenic Builder</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a style="color: white;" class="dropdown-item" href="#">ImgAI</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a style="color: white;" class="dropdown-item" href="#">CloudForm</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a style="color: white;" class="dropdown-item" href="#">ProtVideos</a>
-                                    <div style="color: white;" class="dropdown-divider">ProdMov</div>
-                                    <a style="color: white;" class="dropdown-item" href="#">Pentoa Server</a>
+                                    <b style="color: white;font-weight: 600;text-align: center">Tools and Servers </b><i class="fa fa-server" style="font-size: 15px;padding-left: 10px;"></i> <br> <br>
+
+                                    @foreach(\App\Models\Products::where('category','tools')->get() as $productlist)
+                                        <a style="color: white;" class="dropdown-item" href="{{route('frontend.products.show',$productlist->slug)}}">{{$productlist->product_name}}</a>
+                                        <div class="dropdown-divider"></div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="card" style="border-color: #2196f3;">
                                 <div class="card-body" style="background-color: #4174c7;color: white;border-color: #2b69bd;">
-                                    <b  style="color: white;font-weight: 600;text-align: center">Cloud Products</b><i class="fa fa-cube" style="font-size: 15px;padding-left: 10px;"></i> <br> <br>
-                                    <a  style="color: white;" class="dropdown-item" href="/about">HostBucket</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a  style="color: white;" class="dropdown-item" href="/about/team">HostBucket Deployer</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a  style="color: white;" class="dropdown-item" href="#">OpenFrogs</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a  style="color: white;" class="dropdown-item" href="#">Intractor</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a  style="color: white;" class="dropdown-item" href="#">CMonitor</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a  style="color: white;" class="dropdown-item" href="#">Steam Server</a>
+                                    <b  style="color: white;font-weight: 600;text-align: center">Cloud Products</b><i class="fa fa-cloud" style="font-size: 15px;padding-left: 10px;"></i> <br> <br>
+                                    @foreach(\App\Models\Products::where('category','cloud-products')->get() as $productlist_cloud)
+                                        <a  style="color: white;" class="dropdown-item" href="{{route('frontend.products.show',$productlist_cloud->slug)}}">{{$productlist_cloud->product_name}}</a>
+                                        <div class="dropdown-divider"></div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="card" style="border-color: #2196f3;">
                                 <div class="card-body" style="background-color: #4174c7;color: white;border-color: #2b69bd;">
-                                    <b  style="color: white;font-weight: 600;text-align: center">Cloud Products</b><i class="fa fa-cube" style="font-size: 15px;padding-left: 10px;"></i> <br> <br>
-                                    <a  style="color: white;" class="dropdown-item" href="/about">HostBucket</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a  style="color: white;" class="dropdown-item" href="/about/team">HostBucket Deployer</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a  style="color: white;" class="dropdown-item" href="#">OpenFrogs</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a  style="color: white;" class="dropdown-item" href="#">Intractor</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a  style="color: white;" class="dropdown-item" href="#">CMonitor</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a  style="color: white;" class="dropdown-item" href="#">Steam Server</a>
+
+                                    <b  style="color: white;font-weight: 600;text-align: center">Business APIs</b><i class="fa fa-cube" style="font-size: 15px;padding-left: 10px;"></i> <br> <br>
+                                    @foreach(\App\Models\Products::where('category','business-apis')->get() as $product_business_api)
+                                        <a  style="color: white;" class="dropdown-item" href="{{route('frontend.products.show',$product_business_api->slug)}}">{{$product_business_api->product_name}}</a>
+                                        <div class="dropdown-divider"></div>
+                                    @endforeach
                                 </div>
                             </div>
 

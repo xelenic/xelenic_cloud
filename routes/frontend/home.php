@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\User\FileManagerController;
 use App\Http\Controllers\Frontend\User\XelenicCloudAppController;
 use App\Http\Controllers\Frontend\User\WebsiteController;
 use App\Http\Controllers\Frontend\AizUploadController;
+use App\Http\Controllers\Frontend\ProductsController;
 /*
  * Frontend Controllers
  * All route names are prefixed with 'frontend.'.
@@ -23,6 +24,12 @@ Route::get('/aiz-uploader/get_uploaded_files',  [AizUploadController::class, 'ge
 Route::post('/aiz-uploader/get_file_by_ids',  [AizUploadController::class, 'get_preview_files']);
 Route::get('/aiz-uploader/download/{id}',  [AizUploadController::class, 'attachment_download'])->name('download_attachment');
 Route::get('uploads/all/{file_name}',[AizUploadController::class,'get_image_content']);
+
+
+//Products
+
+Route::get('products/{slug}', [ProductsController::class, 'show'])->name('products.show');
+
 
 
 /*
@@ -40,6 +47,8 @@ Route::group(['middleware' => ['auth', 'password_expires']], function () {
         Route::get('projects/website=dashboard/{id}', [WebsiteController::class, 'dashboard'])->name('website_project.dashboard');
         Route::get('larabulder', [DashboardController::class, 'larabulder'])->name('larabulder');
         Route::match(['get', 'post'],'api/ajax',[WebsiteController::class,'ajax'])->name('ajax_point');
+
+
 
 
 
