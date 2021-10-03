@@ -24,6 +24,33 @@ if (! function_exists('gravatar')) {
 }
 
 
+if (! function_exists('my_asset')) {
+    /**
+     * Generate an asset path for the application.
+     *
+     * @param  string  $path
+     * @param  bool|null  $secure
+     * @return string
+     */
+    function my_asset($path, $secure = null)
+    {
+        return app('url')->asset(''.$path, $secure);
+    }
+}
+
+
+//return file uploaded via uploader
+if (!function_exists('uploaded_asset')) {
+    function uploaded_asset($id)
+    {
+        if (($asset = \App\Models\Upload::find($id)) != null) {
+            return my_asset($asset->file_name);
+        }
+        return url('/').'/img/no-image.jpg';
+    }
+}
+
+
 if (! function_exists('publish_notification')) {
     /**
      * Access the gravatar helper.
