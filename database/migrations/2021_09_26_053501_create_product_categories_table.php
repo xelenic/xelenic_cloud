@@ -16,8 +16,8 @@ class CreateProductCategoriesTable extends Migration
         Schema::create('product_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('category_name');
+            $table->text('icon')->nullable();
             $table->text('description')->nullable();
-            $table->text('laravel');
             $table->timestamps();
         });
     }
