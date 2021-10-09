@@ -275,9 +275,9 @@
                             {
 
                             }else{
-                                pssword[i].className += " invalid";
-                                pssword[i].innerHTML = "<span style='color:red'>Password not match</span>";
-                                valid = false;
+//                                pssword[i].className += " invalid";
+//                                pssword[i].innerHTML = "<span style='color:red'>Password not match</span>";
+//                                valid = false;
                             }
                         }
                         if (valid) {
