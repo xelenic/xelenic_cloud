@@ -143,12 +143,12 @@
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password" oninput="summery_update()" id="host_password" class="form-control">
+            <input type="text" name="password" oninput="summery_update()" id="host_password" class="form-control">
             <div class="errr_description pass" style="color: red;"></div>
         </div>
         <div class="form-group">
             <label>Conform Password</label>
-            <input type="password" name="conform_host_password" id="conform_host_password" class="form-control">
+            <input type="text" name="conform_host_password" id="conform_host_password" class="form-control">
             <div class="errr_description pass" style="color: red;"></div>
         </div>
     </div>

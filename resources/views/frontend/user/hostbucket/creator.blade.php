@@ -58,6 +58,15 @@
             </form>
 
             @push('after-script')
+
+            <script>
+                $( document ).ready(function() {
+                    var randomstring = Math.random().toString(36).slice(-8);
+
+                    $('#host_password').val(randomstring);
+                });
+            </script>
+
             <script>
 
 

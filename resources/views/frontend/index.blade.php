@@ -177,29 +177,100 @@
     </section>
     <!-- End banner Area -->
 
-    <!-- Start brand Area -->
-    <section class="brand-area pt-40">
-        <div class="container">
-            <h3 style="text-align: center">Our Partners</h3>
-            <div class="row logo-wrap" style="padding-top: 10px;">
-                <a class="col single-img" href="#">
-                    <img class="d-block mx-auto" src="FrontPage/img/l1.png" alt="">
-                </a>
-                <a class="col single-img" href="#">
-                    <img class="d-block mx-auto" src="FrontPage/img/l2.png" alt="">
-                </a>
-                <a class="col single-img" href="#">
-                    <img class="d-block mx-auto" src="FrontPage/img/l3.png" alt="">
-                </a>
-                <a class="col single-img" href="#">
-                    <img class="d-block mx-auto" src="FrontPage/img/l4.png" alt="">
-                </a>
-                <a class="col single-img" href="#">
-                    <img class="d-block mx-auto" src="FrontPage/img/l5.png" alt="">
-                </a>
+    <section>
+        <div style="padding-top: 100px;padding-bottom: 100px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div style="background-image: url('{{url('images/domain.png')}}');height: 70px;background-position: center;background-size: contain;background-repeat: no-repeat;"></div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h4>You can Search different</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae tortor a lectus pharetra consequat. Suspendisse pulvinar porttitor mi ut lobortis.</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div style="background-image: url('{{url('images/shield.png')}}');height: 70px;background-position: center;background-size: contain;background-repeat: no-repeat;"></div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h4>We don't sell your search details</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae tortor a lectus pharetra consequat. Suspendisse pulvinar porttitor mi ut lobortis.</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div style="background-image: url('{{url('images/929421.png')}}');height: 70px;background-position: center;background-size: contain;background-repeat: no-repeat;"></div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h4>Hello World</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae tortor a lectus pharetra consequat. Suspendisse pulvinar porttitor mi ut lobortis.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div style="background-image: url('{{url('images/banner_offer.jpg')}}');height: 167px;background-repeat: no-repeat;background-position: center;background-size: contain;"></div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>Details Details</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae tortor a lectus pharetra consequat.
+                                            Suspendisse pulvinar porttitor mi ut lobortis.</p>
+                                        <a href="" class="btn btn-primary">Start with your brand</a>
+                                    </div>
+                                </div><br><br>
+                                <h3>Let's find your perfect domain name</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae tortor a lectus pharetra consequat.</p>
+                                <input type="text" class="form-control">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div style="background: #ffffff;color: white;border-radius: 10px;text-align: center;padding-bottom: 3px;border-color: #b9b9b9;border-style: dashed;margin-top: 10px;border-width: 1px;">
+                                            <h3 style="color: #a4a4a4;margin-top: 2px;margin-bottom: 2px;font-size: 19px;font-weight: 600;">.com</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div style="background: #ffffff;color: white;border-radius: 10px;text-align: center;padding-bottom: 3px;border-color: #b9b9b9;border-style: dashed;margin-top: 10px;border-width: 1px;">
+                                            <h3 style="color: #a4a4a4;margin-top: 2px;margin-bottom: 2px;font-size: 19px;font-weight: 600;">.lk</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div style="background: #ffffff;color: white;border-radius: 10px;text-align: center;padding-bottom: 3px;border-color: #b9b9b9;border-style: dashed;margin-top: 10px;border-width: 1px;">
+                                            <h3 style="color: #a4a4a4;margin-top: 2px;margin-bottom: 2px;font-size: 19px;font-weight: 600;">.org</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div style="background: #ffffff;color: white;border-radius: 10px;text-align: center;padding-bottom: 3px;border-color: #b9b9b9;border-style: dashed;margin-top: 10px;border-width: 1px;">
+                                            <h3 style="color: #a4a4a4;margin-top: 2px;margin-bottom: 2px;font-size: 19px;font-weight: 600;">.net</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
         </div>
+
     </section>
+
+
     <!-- End brand Area -->
     <!-- Start about Area -->
 
