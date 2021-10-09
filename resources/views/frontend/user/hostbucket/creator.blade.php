@@ -24,6 +24,7 @@
             <form id="regForm" action="{{route('frontend.user.hostbucket.create_hostbucket')}}" method="post">
                 {{csrf_field()}}
                 <div class="tab">
+
                     @include('frontend.user.hostbucket.section.package_selection')
                 </div>
 
@@ -59,7 +60,7 @@
 
             @push('after-script')
 
-          
+
 
             <script>
 
