@@ -271,7 +271,7 @@
                             }else{
 
                             }
-                           
+
                         }
                         if (valid) {
                             document.getElementsByClassName("step")[currentTab].className += " finish";
