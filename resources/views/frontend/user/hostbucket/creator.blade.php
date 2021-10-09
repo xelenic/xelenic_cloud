@@ -271,14 +271,7 @@
                             }else{
 
                             }
-                            if (password == conform_host_password)
-                            {
-
-                            }else{
-//                                pssword[i].className += " invalid";
-//                                pssword[i].innerHTML = "<span style='color:red'>Password not match</span>";
-//                                valid = false;
-                            }
+                           
                         }
                         if (valid) {
                             document.getElementsByClassName("step")[currentTab].className += " finish";
