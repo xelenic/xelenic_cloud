@@ -146,10 +146,6 @@
             <input type="text" name="password" oninput="summery_update()" id="host_password" class="form-control" value="{{randomPassword()}}">
             <div class="errr_description pass" style="color: red;"></div>
         </div>
-        <div class="form-group">
-            <label>Conform Password</label>
-            <input type="text" name="conform_host_password" id="conform_host_password" class="form-control" value="{{randomPassword()}}">
-            <div class="errr_description pass" style="color: red;"></div>
-        </div>
+  
     </div>
 </div>
