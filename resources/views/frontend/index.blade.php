@@ -177,7 +177,7 @@
     </section>
     <!-- End banner Area -->
 
-    <section>
+    <section style="background-position: center;background-size: cover;background-repeat: no-repeat;background-image: url('{{url('images/stackpanel.png')}}')">
         <div style="padding-top: 100px;padding-bottom: 100px;">
             <div class="container">
                 <div class="row">

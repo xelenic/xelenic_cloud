@@ -41,10 +41,6 @@ class HostBucketController extends Controller
             'conform_host_password' => 'required',
         ]);
         $hostbucket_packagename = HostBucketPackages::where('name',$request->package_name)->first();
-
-
-
-
         if ($validator->fails()) {
             $serverDetails = [
               'bucket_name' => $request->bucket_name,
@@ -128,9 +124,22 @@ class HostBucketController extends Controller
 
         $packageDetails = HostBucketPackages::all();
 
+        $server_name = 'SERVER_'.self::generateRandomString(8);
+
         return view('frontend.user.hostbucket.creator',[
-            'package_details' => $packageDetails
+            'package_details' => $packageDetails,
+            'server_name' =>$server_name
         ]);
+    }
+
+    public static function  generateRandomString($length = 10) {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 
 

@@ -60,7 +60,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label>Server Name</label>
-            <input type="text" name="bucket_name" class="form-control" required>
+            <input type="text" name="bucket_name" class="form-control" value="{{$server_name}}" required readonly>
             <div class="errr_description" style="color: red;"></div>
         </div>
         <div class="form-group">
