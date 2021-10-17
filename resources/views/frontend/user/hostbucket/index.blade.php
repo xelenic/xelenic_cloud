@@ -68,7 +68,7 @@
                                                         <button type="button" class="btn btn-secondary">Connections</button>
                                                             <form method="POST" action="{{route('frontend.user.hostbucket.login_cpanel',$hostbucket->id)}}" target="_blank">
                                                                 {{csrf_field()}}
-                                                                <button type="button" class="btn btn-secondary">Cpanel</button>
+                                                                <button type="submit" class="btn btn-secondary" style="font-size: 13px;border-radius: 0px;background: #ff4d15;border-color: #f44336;">Cpanel</button>
                                                             </form>
 
                                                     </div>
