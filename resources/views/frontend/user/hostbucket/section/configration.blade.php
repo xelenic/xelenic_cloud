@@ -128,7 +128,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Email</label>
-                    <input id="host_email" name="support_email" oninput="summery_update()" type="text" class="form-control host_email">
+                    <input id="host_email" name="support_email" oninput="summery_update()" type="text" class="form-control host_email" value="{{auth()->user()->email}}" readonly>
                     <div class="errr_description support_email" style="color: red;"></div>
                 </div>
             </div>
@@ -146,6 +146,6 @@
             <input type="text" name="password" oninput="summery_update()" id="host_password" class="form-control" value="{{randomPassword()}}">
             <div class="errr_description pass" style="color: red;"></div>
         </div>
-  
+
     </div>
 </div>
