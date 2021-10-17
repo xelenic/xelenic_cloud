@@ -38,7 +38,6 @@ class HostBucketController extends Controller
             'support_email' => 'required|email',
             'domain_name' => 'required|url',
             'password' => 'required|string|min:6',
-            'conform_host_password' => 'required',
         ]);
         $hostbucket_packagename = HostBucketPackages::where('name',$request->package_name)->first();
         if ($validator->fails()) {
