@@ -36,7 +36,7 @@ class HostBucketController extends Controller
             'xelenic_panel' => 'required',
             'username' => 'required|min:6',
             'support_email' => 'required|email',
-            'domain_name' => 'required|url',
+            'domain_name' => 'required',
             'password' => 'required|string|min:6',
         ]);
         $hostbucket_packagename = HostBucketPackages::where('name',$request->package_name)->first();
@@ -51,7 +51,7 @@ class HostBucketController extends Controller
               'xelenic_panel' => $request->xelenic_panel,
               'username' => $request->username,
               'support_email' => $request->support_email,
-              'domain_name' => $request->domain_name,
+              'domain_name' => 'https://'.$request->domain_name,
               'password' => $request->password,
               'conform_host_password' => $request->conform_host_password,
               'packageDetails' => $hostbucket_packagename
@@ -62,7 +62,7 @@ class HostBucketController extends Controller
         if(auth()->user()->credits_value > json_decode($request->estimated_cost_input)->total_calculation)
         {
 
-            $getDetails = Reseller::create_list('1',$request->domain_name,$request->package_name,$request->username,$request->support_email,$request->password);
+            $getDetails = Reseller::create_list('1','https://'.$request->domain_name,$request->package_name,$request->username,$request->support_email,$request->password);
             if($getDetails->metadata->output->raw == null){
                 return redirect()->route('frontend.user.hostbucket')->with('error_message', 'Something wrong with our Host Bucket System');
 
@@ -82,7 +82,7 @@ class HostBucketController extends Controller
                 $hostbucket->control_panel_type = $request->control_panel_type;
                 $hostbucket->estimated_value = $request->estimated_value;
                 $hostbucket->bucket_name = $request->bucket_name;
-                $hostbucket->domain_name =  $request->domain_name;
+                $hostbucket->domain_name =  'https://'.$request->domain_name;
                 $hostbucket->support_email = $request->support_email;
                 $hostbucket->username =  $request->username;
                 $hostbucket->password = $request->password;

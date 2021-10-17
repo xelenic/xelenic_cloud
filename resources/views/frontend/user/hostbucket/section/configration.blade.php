@@ -135,7 +135,7 @@
         </div>
 
         <div class="form-group">
-            <label>Domain</label>
+            <label>Domain (Example : example.com)</label>
             <input id="host_domain" name="domain_name" oninput="summery_update()" type="text" class="form-control">
             <div class="errr_description" style="color: red;"></div>
         </div>
