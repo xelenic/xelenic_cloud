@@ -66,6 +66,11 @@
                                                         @endif
                                                         <button type="button" class="btn btn-secondary">Billing</button>
                                                         <button type="button" class="btn btn-secondary">Connections</button>
+                                                            <form method="POST" action="{{route('frontend.user.hostbucket.login_cpanel',$hostbucket->id)}}" target="_blank">
+                                                                {{csrf_field()}}
+                                                                <button type="button" class="btn btn-secondary">Cpanel</button>
+                                                            </form>
+
                                                     </div>
                                                 </div>
                                             </div>
