@@ -25,6 +25,7 @@ class CreateWebsitesTable extends Migration
             $table->text('preview_url')->nullable();
             $table->text('source_zip')->nullable();
             $table->text('project_file')->nullable();
+            $table->text('hostbucket_id')->nullable();
             $table->timestamps();
         });
     }

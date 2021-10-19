@@ -155,6 +155,20 @@
     var project_file_name    =   '';
     var website_id = {{$website_id}};
 
+    @if($ftp_username)
+        var hostbucket_ftp_username = '{{$ftp_username}}';
+    @else
+        var hostbucket_ftp_username = '';
+    @endif
+
+    @if($ftp_password)
+        var hostbucket_ftp_password = '{{$ftp_password}}';
+    @else
+        var hostbucket_ftp_password = '';
+    @endif
+
+
+
 
 </script>
 <script src="{{url('backend/assets/builder/js/options.js')}}"></script>

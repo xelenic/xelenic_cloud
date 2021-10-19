@@ -292,7 +292,7 @@ class CpanelCore
 
     public function ftpCreate($user, $password, $quota = '1024') {
 
-        $func = "https://$this->cPanelUrl:$this->cPanelPort/execute/Ftp/add_ftp?user=$user&pass=$password&quota=$quota";
+        $func = "https://$this->cPanelUrl:$this->cPanelPort/execute/Ftp/add_ftp?user=$user&pass=$password&quota=$quota&homedir=public_html%2F";
         return $this->exe_cpanel($func);
 
     }

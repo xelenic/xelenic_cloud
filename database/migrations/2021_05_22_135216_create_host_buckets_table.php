@@ -38,6 +38,9 @@ class CreateHostBucketsTable extends Migration
             $table->text('name_servers_details');
             $table->text('reseller_id');
             $table->text('estimate_days');
+            $table->text('cpanel_api_details')->nullable();
+            $table->text('hostbucket_ftp_username')->nullable();
+            $table->text('hostbucket_ftp_password')->nullable();
             $table->text('user_id');
             $table->timestamps();
         });

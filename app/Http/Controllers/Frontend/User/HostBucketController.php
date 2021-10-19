@@ -7,6 +7,7 @@ use App\Models\Auth\User;
 use App\Models\HostBucket;
 use App\Models\HostBucketPackages;
 use App\Models\Reseller;
+use App\Models\Website;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Validator;
@@ -21,6 +22,40 @@ class HostBucketController extends Controller
         return view('frontend.user.hostbucket.index',[
             'hostbucket_details' => $getHostBucket
         ]);
+    }
+
+    public function website_project_connect(Request $request)
+    {
+
+        $hostingDetails = HostBucket::where('id',$request->hostbucket_id)->first();
+
+        $resellerDetails = Reseller::where('id',$hostingDetails->reseller_id)->first();
+
+        $input = preg_replace( "#^[^:/.]*[:/]+#i", "", $resellerDetails->url );
+
+        $username = 'xelenicftpacc';
+        $password = 'Redhacker88jeuROEL';
+
+        $api = new CpanelCore($input,$hostingDetails->username, $hostingDetails->password,$hostingDetails->cpanel_api_details);
+        $getretnGit = $api->ftpCreate($username,$password,null);
+
+        $hosbucket = HostBucket::where('id',$request->hostbucket_id)->update([
+           'hostbucket_ftp_username' => $username.'@'.self::remove_http($hostingDetails->domain_name),
+            'hostbucket_ftp_password' => $password,
+        ]);
+
+        Website::where('id',$request->website_id)->update([
+           'hostbucket_id' =>  $hostingDetails->id
+        ]);
+
+
+       return back();
+    }
+
+    public static function remove_http($url)
+    {
+        $str = preg_replace('#^https?://#', '', rtrim($url,'/'));
+        return $str;
     }
 
 

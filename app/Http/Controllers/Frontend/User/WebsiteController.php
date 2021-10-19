@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\HostBucket;
 use App\Models\Website;
 use Illuminate\Http\Request;
 use Auth;
@@ -38,6 +39,8 @@ class WebsiteController extends Controller
         $data['groups'] =   $Viewbuilder->groups;
         $data['website_id']  = $id;
         $data['project_id'] = 0;
+        $data['ftp_username'] = null;
+        $data['ftp_password'] = null;
         return view('frontend.user.web_projects.web_builder',$data);
     }
 
@@ -49,6 +52,18 @@ class WebsiteController extends Controller
         $Viewbuilder = new \App\Utilities\Builder\Html;
         $data['groups'] =   $Viewbuilder->groups;
         $websiteDetails = Website::where('id',$id)->first();
+
+        if($websiteDetails->hostbucket_id != null){
+            $hostbucket = HostBucket::where('id', $websiteDetails->hostbucket_id)->first();
+        }else{
+            $hostbucket = null;
+        }
+
+        $data['ftp_username'] = $hostbucket->hostbucket_ftp_username;
+        $data['ftp_password'] = $hostbucket->hostbucket_ftp_password;
+
+
+
         $data['website_id'] = $id;
         $data['projectfile'] = url($websiteDetails->project_file);
         $data['project_id'] = $id;

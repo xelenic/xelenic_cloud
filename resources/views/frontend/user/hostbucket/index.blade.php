@@ -47,25 +47,54 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div style="background-image: url('{{url('images/vps.svg')}}');height: 100px;background-size: contain;background-repeat: no-repeat;background-position: center;"></div>
-                                        </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <div class="">
-                                                <p style="color: dimgrey;"><b>Status:</b> <span style="">{{$hostbucket->status}}</span></p>
-                                                <p style="color: dimgrey;"><b>IP</b> <span style="">{{$hostbucket->ip}}</span></p>
-                                                </p>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p style="color: dimgrey;"><b>Status:</b> <span style="">{{$hostbucket->status}}</span></p>
+                                                        <p style="color: dimgrey;"><b>IP</b> <span style="">{{$hostbucket->ip}}</span></p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @if($hostbucket->cpanel_api_details)
+                                                            <p style="color: dimgrey;"><b>XePanel:</b> <span style="background: #4d90fe;padding: 7px;border-radius: 8px;color: white;font-size: 11px;padding-top: 4px;padding-bottom: 4px;">Active</span></p>
+                                                            @if(\App\Models\Website::where('hostbucket_id',$hostbucket->id)->first())
+                                                               <div>
+                                                                   <p style="font-size: 12px;margin-top: 5px;background:#8bc34a ;color: white;text-align: center;padding: 3px;border-radius: 6px;">{{\App\Models\Website::where('hostbucket_id',$hostbucket->id)->first()->name}}</p>
+                                                               </div>
 
+                                                            @else
+                                                                <p style="">SQL Injection</p>
+                                                            @endif
+
+                                                            <p style="color: dimgrey;font-size: 12px;padding-top: 14px;"><b></b>
+
+                                                        @else
+                                                            <p style="color: dimgrey;"><b>XePanel:</b> <span style="background: #fe0e00;padding: 7px;border-radius: 8px;color: white;font-size: 11px;padding-top: 4px;padding-bottom: 4px;">Pending</span></p>
+
+
+                                                            <p style="color: dimgrey;font-size: 12px;padding-top: 8px;"><b>Still Xepanel Pending?</b>
+                                                            <div style="background: #9c9c9c;padding: 7px;border-radius: 8px;color: white;font-size: 11px;padding-top: 4px;padding-bottom: 4px;text-align: center;">Ask from Xelenic Support</div></p>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                                 <br>
                                                 <div class="">
                                                     <div class="btn-group btn-group-xs mb-25" role="group" aria-label="Basic example">
                                                         @if($hostbucket->cpanel_api_details)
-                                                            <a href="{{ route('frontend.user.hostbucket.host_panel',$hostbucket->id)}}" type="button" class="btn btn-primary">HostPanel</a>
+                                                            <a href="{{ route('frontend.user.hostbucket.host_panel',$hostbucket->id)}}" type="button" class="btn btn-primary" style="padding-top: 6px;">HostPanel</a>
                                                         @else
 
                                                         @endif
                                                         <button type="button" class="btn btn-secondary">Billing</button>
-                                                        <button type="button" class="btn btn-secondary">Connections</button>
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 12px;">
+                                                                    Connection
+                                                                </button>
+                                                                <div class="dropdown-menu dropdown-menu-right">
+                                                                    <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#publsih_website_panel_{{$hostbucket->id}}">Publish your Website</button>
+                                                                    <button class="dropdown-item" type="button">RQL</button>
+                                                                </div>
+                                                            </div>
                                                             <form method="POST" action="{{route('frontend.user.hostbucket.login_cpanel',$hostbucket->id)}}" target="_blank">
                                                                 {{csrf_field()}}
                                                                 <button type="submit" class="btn btn-secondary" style="font-size: 13px;border-radius: 0px;background: #ff4d15;border-color: #f44336;">Cpanel</button>
@@ -80,6 +109,39 @@
                             </div>
                         </a>
                     </div>
+
+                    <!-- Xelenic Builder Connection -->
+                    <div class="modal fade" id="publsih_website_panel_{{$hostbucket->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form action="{{route('frontend.user.hostbucket.website_project_connect')}}" method="post">
+                                    {{csrf_field()}}
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">{{$hostbucket->bucket_name}} Website Connection</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" value="{{$hostbucket->id}}" name="hostbucket_id">
+                                       <label>Website Project:</label>
+                                        <select name="website_id" class="form-control">
+                                            @foreach(\App\Models\Website::where('user_id',auth()->user()->id)->get() as $website_details)
+                                                <option value="{{$website_details->id}}">{{$website_details->name}}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Connect</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
                 @endforeach
 
             </div>

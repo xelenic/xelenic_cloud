@@ -22,6 +22,7 @@ Route::group(['middleware' => ['auth', 'password_expires']], function () {
         Route::get('hostbucket/dashboard/{id}', [HostBucketController::class, 'view'])->name('hostbucket.view');
         Route::get('hostbucket/create_wrong/{data}', [HostBucketController::class, 'create_wrong'])->name('hostbucket.create_wrong');
         Route::post('hostbucket/create_hostbucket', [HostBucketController::class, 'create_hostbucket'])->name('hostbucket.create_hostbucket');
+        Route::post('hostbucket/website_project_connect', [HostBucketController::class, 'website_project_connect'])->name('hostbucket.website_project_connect');
 
 
     });
