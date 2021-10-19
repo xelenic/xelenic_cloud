@@ -55,12 +55,16 @@ class WebsiteController extends Controller
 
         if($websiteDetails->hostbucket_id != null){
             $hostbucket = HostBucket::where('id', $websiteDetails->hostbucket_id)->first();
+            $data['ftp_username'] = $hostbucket->hostbucket_ftp_username;
+            $data['ftp_password'] = $hostbucket->hostbucket_ftp_password;
         }else{
+            $data['ftp_username'] = null;
+            $data['ftp_password'] = null;
             $hostbucket = null;
         }
 
-        $data['ftp_username'] = $hostbucket->hostbucket_ftp_username;
-        $data['ftp_password'] = $hostbucket->hostbucket_ftp_password;
+
+
 
 
 
