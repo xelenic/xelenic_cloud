@@ -212,6 +212,7 @@ class Request {
        $mode = ini_get('magic_quotes_gpc');
        $dataPost = $_POST['data'];
        $website_id = $_POST['website_id'];
+
        $websiteDetail = Website::where('id',$website_id)->first();
 
 
