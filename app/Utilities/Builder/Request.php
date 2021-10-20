@@ -5,6 +5,7 @@ use \ZipArchive;
 use Illuminate\Support\Facades\Storage;
 use App\Utilities\Builder\FontsToDownload;
 use Illuminate\Support\Facades\Cache;
+use App\Utilities\Builder\Ftpuploading;
 class Request {
    protected $_base_path = null;
    protected $_base_url = null;
