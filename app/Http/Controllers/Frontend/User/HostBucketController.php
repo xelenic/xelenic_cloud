@@ -98,6 +98,8 @@ class HostBucketController extends Controller
         {
 
             $getDetails = Reseller::create_list('1','https://'.$request->domain_name,$request->package_name,$request->username,$request->support_email,$request->password);
+            dd($get_details);
+
             if($getDetails->metadata->output->raw == null){
                 return redirect()->route('frontend.user.hostbucket')->with('error_message', 'Something wrong with our Host Bucket System');
 
