@@ -13,6 +13,7 @@ class Reseller extends Model
         $domain_name_removal= preg_replace( "#^[^:/.]*[:/]+#i", "", $domain_name );
         try{
             $query = $resellerDetails->url.":".$resellerDetails->port."/json-api/createacct?api.version=1&username=".$user_name."&domain=".$domain_name_removal.'&pkgname='.$package_name.'&';
+            dd($query);
             $adding_query = $query.'contactemail='.$contact_email.'&password='.$password;
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,0);
